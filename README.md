@@ -12,104 +12,72 @@ Icons: [air-icon-library.vercel.app](https://air-icon-library.vercel.app/)
 
 ## Quick start (designers)
 
-### 1. Copy the template to your machine
+Template (maintainer updates shared components here):  
+https://github.com/PrincePal-Carrier/Air_DesignSystem-vanilla
 
-```bash
-git clone https://github.com/PrincePal-Carrier/Air_DesignSystem-vanilla.git
-```
+**You do not need GitHub or Terminal knowledge.** Create a folder, open Cursor, paste one prompt. Cursor copies the kit, configures the project, and starts the preview server for you.
 
-### 2. Rename the folder to your product (optional but recommended)
+### Steps
 
-```bash
-mv Air_DesignSystem-vanilla my-carrier-product-mock
-cd my-carrier-product-mock
-```
+1. Create a **new empty folder** named after your product (example: `Carrier Fleet Portal Mock`).
+2. **File → Open Folder** in Cursor and select that folder.
+3. Copy the **entire** [Project setup prompt](#project-setup-prompt) below into Cursor Chat (change the product name on the last line). Send it and wait until Cursor says you are ready.
+4. Paste your **PRD or product requirements** in chat and ask Cursor to build the screens.
 
-The app does not depend on the folder name. Renaming helps you tell mocks apart on disk.
+That is the full workflow.
 
-### 3. Point Git at **your** product repo (do not push PRDs to the template)
+---
 
-Create an empty private repo on GitHub for your mock, then:
+### Project setup prompt
 
-```bash
-git remote rename origin upstream
-git remote add origin git@github.com:YOUR_ORG/your-product-mock.git
-git push -u origin main
-```
-
-You keep `upstream` on this template to pull new `DS.*` components later. See [docs/UPSTREAM.md](docs/UPSTREAM.md).
-
-### 4. Set your product name
-
-Edit [i18n.js](i18n.js): `platformProductName`, `platformDocumentTitle`.
-
-Fill [docs/PRODUCT-VOICE.md](docs/PRODUCT-VOICE.md) for your product terms.
-
-### 5. Open **this folder** in Cursor
-
-Use **File → Open Folder** and choose the renamed folder (e.g. `my-carrier-product-mock`).
-
-Open the **kit folder only**, not the parent `VRF` directory. Otherwise Git may show every file with a blue **U** (untracked) because a different repo is active.
-
-In Source Control, confirm the repository root is your mock folder and that files are committed (not all **U**). Reload the window if needed.
-
-### 6. Run the mock locally
-
-```bash
-python3 -m http.server 8010
-```
-
-- Shell: [http://localhost:8010/](http://localhost:8010/)
-- Component gallery: [http://localhost:8010/gallery/](http://localhost:8010/gallery/)
-
-### 7. First prompt in Cursor (send once per project)
-
-Paste this before your PRD:
+Copy everything inside the box into Cursor Chat. Replace the product name on the last line.
 
 ```text
-This is a Carrier HTML/CSS/JS product mock using the Air design system.
+Set up a Carrier product mock in this empty workspace.
 
-Before writing code:
-1. Read ARCHITECTURE.md completely.
-2. Read every rule in .cursor/rules/ (especially ds-boundaries.mdc).
-3. Never edit DS-owned files: css/, components.js, components-date.js, styles.css, gallery/.
-4. Build screens only under features/ using DS.* APIs. Do not rebuild the app bar or side nav.
+Template (copy the full vanilla starter from here):
+https://github.com/PrincePal-Carrier/Air_DesignSystem-vanilla
 
-Reply with a short confirmation that you understand the boundaries, then wait for my requirements.
-```
+Do all of the following yourself (run commands in the terminal; do not ask me to copy commands):
 
-### 8. Prompt with your requirement or PRD
+1. Copy the full starter into this folder: design system (components.js, components-date.js, css/, styles.css), shell (index.html, app.js, i18n.js), Assets/, gallery/, tests/, docs/, features/_example, features/shared, and all files under .cursor/rules/.
 
-Example follow-up:
+2. Git: initialize if needed. Add a remote named upstream pointing to the template URL above. Never push to the template repo.
 
-```text
-Build the user list screen described below in features/users/. Use DS.dataTable, DS.modal, and DS.tag where appropriate. Carrier branding. Match docs/PRODUCT-VOICE.md.
+3. Set platformProductName and platformDocumentTitle in i18n.js from my product name below. Add my product name to docs/PRODUCT-VOICE.md.
 
-[paste PRD or Figma link]
+4. Read ARCHITECTURE.md and .cursor/rules/ so you are ready to build screens later (features/ only; never edit components.js or css/).
+
+5. Start the local preview server on port 8010 (python3 -m http.server 8010) in the background and tell me when I can open http://localhost:8010/ in my browser.
+
+My product name: YOUR PRODUCT NAME HERE
 ```
 
 ---
 
-## Add screens
+### After setup: build your product
 
-1. Copy [features/_example/](features/_example/) to `features/<your-screen>/`.
-2. Register the route in [app.js](app.js) (`FEATURE_MOUNTERS` + `navGroups()`).
-3. Implement `mount(root, ctx)` using `DS.*` only. Shell chrome stays in `app.js`.
+Paste your PRD, user stories, or a Figma link. Example:
+
+```text
+Build the screens described below in this Air mock. Use DS.* under features/ only. Carrier branding.
+
+[paste requirements]
+```
+
+Ask Cursor to preview or change screens anytime in chat. Shell: http://localhost:8010/ · Component gallery: http://localhost:8010/gallery/
 
 ---
 
-## Update the shared DS library
+## Update the shared design system later
 
-When the maintainer ships new components:
+When the maintainer adds components, paste in Cursor:
 
-```bash
-git fetch upstream
-git merge upstream/main
+```text
+Merge design-system updates from upstream https://github.com/PrincePal-Carrier/Air_DesignSystem-vanilla into this project. Do not change features/. Summarize new DS.* APIs from CHANGELOG.md.
 ```
 
-Read [CHANGELOG.md](CHANGELOG.md). Details: [docs/UPSTREAM.md](docs/UPSTREAM.md).
-
-Missing reusable component? See [CONTRIBUTING.md](CONTRIBUTING.md). One-off: Figma MCP under `features/`.
+Missing a reusable component? Ask the maintainer ([CONTRIBUTING.md](CONTRIBUTING.md)) or use Figma MCP for a one-off in `features/`. Details: [docs/UPSTREAM.md](docs/UPSTREAM.md).
 
 ---
 
@@ -145,17 +113,3 @@ node tests/run.js
 | [docs/PRODUCT-VOICE.md](docs/PRODUCT-VOICE.md) | Your product glossary |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Maintainer vs designer roles |
 | [PROGRESS.md](PROGRESS.md) | Your mock changelog |
-
----
-
-## Why do I see blue **U** on every file?
-
-In Cursor/VS Code, **U** means **Untracked** in Git (not committed in the repo Git is using).
-
-Common causes:
-
-1. **Wrong Git root** – You opened the parent `VRF` folder (or a parent that has its own `.git` with no commits). Open only this kit folder so Git uses `Air_DesignSystem-vanilla/.git` (or your renamed copy).
-2. **Fresh clone before first commit** – After clone, files should show as tracked on `main`. If not, run `git status` in the terminal inside your mock folder.
-3. **Stale UI** – Run **Developer: Reload Window** after cloning.
-
-If `git status` inside your mock folder says `nothing to commit, working tree clean`, you can ignore stale **U** badges or reload the editor.
