@@ -1,0 +1,39 @@
+---
+description: Product voice for places, people, buttons, errors, and table tags
+alwaysApply: true
+---
+
+# Product voice
+
+**Per-product overrides:** edit [docs/PRODUCT-VOICE.md](../../docs/PRODUCT-VOICE.md) for your Carrier product mock. This file is the shared Carrier cloud reference (VRF-origin patterns).
+
+**Region is never a user-facing word.** Internal keys (`region`, `formatRegion`) may stay.
+
+## Places
+
+| Concept | Name | Where |
+|---|---|---|
+| Seat territory | Managed Scope | Carrier seat column, filter, Add/Edit scope columns |
+| Site where | Location | Compact `Admin1, Country` on lists and site filters |
+| How to find it | Address | Full street on forms and drawers |
+
+## People and companies
+
+- Account = login (email). Seat = permission slot.
+- Column and form **Name**. **End-User** (hyphen, capital U).
+- User-facing noun **company**. No org or customer group on screen.
+
+## Buttons, errors, empty
+
+- Fields, helpers, errors, empty states: sentence case. Nav and toolbar: Title Case.
+- Optional labels: `(optional)`.
+- Destructive stay: Keep {noun}, never Cancel opposite Delete.
+- Toasts: past result, no successfully, no please.
+- Empty: **No {noun} yet** when unconstrained; **No {noun} match these filters** after search or filters.
+
+## Table tags
+
+Closed-set status cells use `DS.tag` (color + text). Do not chip names, emails, SNs, dates, Location, or Address.
+
+- **Equipment Brand** for manufacturer (never Device Brand).
+- Connectivity / status enums: define in `docs/PRODUCT-VOICE.md` for your product.

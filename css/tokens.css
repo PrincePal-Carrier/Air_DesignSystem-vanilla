@@ -1,0 +1,104 @@
+/* ─── Design tokens ─── */
+@property --ds-nav-width {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 240px;
+}
+
+:root {
+  --ds-accent:            #0659F9;
+  --ds-accent-hover:      #0E49C7;
+  --ds-accent-subtle:     #EEF3FF;
+  --ds-navy:              #102B6E;
+
+  --ds-bg-app:            #FFFFFF;
+  --ds-bg-disabled:       #F1F3F5;
+  --ds-bg-placeholder:    #D5D8D9;
+  --ds-bg-platform:       #F6F8FA;
+
+  --ds-text-primary:      #141618;
+  --ds-text-secondary:    #64686B;
+  --ds-text-muted:        #999D9F;
+  --ds-text-contrast:     #FFFFFF;
+  --ds-text-link:         #0659F9;
+  --ds-text-disabled:     #999D9F;
+  --ds-content-disabled:  #B9BCBE;
+
+  --ds-border:            #D5D8D9;
+  --ds-divider:           #DCDEE0;
+  --ds-border-error:      #E71B0C;
+  --ds-error:             #E71B0C;
+
+  /* Filled input - Air TextField (Figma Air Components) */
+  --ds-input-border:      #D5D8D9;
+  --ds-input-bg-filled:   #F1F3F5;
+  --ds-input-placeholder: #999D9F;
+  /* Hover wash layered over whatever the control's own background is */
+  --ds-state-hover:       rgba(20, 22, 24, 0.04);
+
+  /* Semantic colors - Air Button (Figma Air Components) */
+  --ds-primary:           #0659F9;
+  --ds-primary-hover:     #0E49C7;
+  --ds-primary-contrast:  #FFFFFF;
+  --ds-primary-outlined-border: #A4C3FD;
+  --ds-primary-outlined-hover:  #EEF3FF;
+  /* Hover on a range day inside a selection band - Air Date suite */
+  --ds-primary-selected-hover:  #D9E5FE;
+
+  --ds-secondary:         #3F4344;
+  --ds-secondary-hover:   #2E3132;
+  --ds-secondary-contrast:#FFFFFF;
+  --ds-secondary-outlined-border: #C0C3C5;
+  --ds-secondary-outlined-hover:  #F4F5F5;
+
+  --ds-error-main:        #E71B0C;
+  --ds-error-hover:       #C9180A;
+  --ds-error-contrast:    #FFFFFF;
+  --ds-error-outlined-border: #FBAFA9;
+  --ds-error-outlined-hover:  #FEF4F3;
+
+  --ds-warning:           #FFC800;
+  --ds-warning-hover:     #EDBA00;
+  --ds-warning-contrast:  #302500;
+  --ds-warning-strong:    #7D6200;
+  --ds-warning-outlined-border: #FFD641;
+  --ds-warning-outlined-hover:  #FFF5D0;
+
+  --ds-info:              #0C77CD;
+  --ds-info-hover:        #0A68B1;
+  --ds-info-contrast:     #FFFFFF;
+  --ds-info-outlined-border: #8CC9F8;
+  --ds-info-outlined-hover:  #EDF7FE;
+
+  --ds-success:           #33862F;
+  --ds-success-hover:     #2D7429;
+  --ds-success-contrast:  #FFFFFF;
+  --ds-success-outlined-border: #8AD485;
+  --ds-success-outlined-hover:  #EDF8EC;
+
+  --ds-radius-sm:         4px;
+  --ds-radius-md:         8px;
+
+  /* Air Elevation/4 "Menu, Card" (Figma). Two stacked drop shadows. */
+  --ds-elevation-4:       0 8px 12px 0 rgba(20, 22, 24, 0.15),
+                          0 0 1px 0 rgba(20, 22, 24, 0.31);
+
+  /* Shared outlined chevron (matches Air chevron_down used on custom selects) */
+  --ds-chevron-down-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath stroke='%2364686B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+
+  /* Control heights - shared by Air Button and Air TextField */
+  --ds-size-xlarge:       56px;
+  --ds-size-large:        48px;
+  --ds-size-medium:       40px;
+  --ds-size-small:        32px;
+
+  --ds-nav-width:         240px;
+  /* 12px + 40px icon tile + 12px - matches app bar toggle inset */
+  --ds-nav-width-collapsed: 64px;
+  --ds-nav-motion-duration: 0.3s;
+  --ds-nav-label-duration: 0.24s;
+  --ds-nav-label-expand-delay: 0.08s;
+  --ds-nav-motion-ease:   cubic-bezier(0.4, 0, 0.2, 1);
+
+  --ds-font-family:       'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}

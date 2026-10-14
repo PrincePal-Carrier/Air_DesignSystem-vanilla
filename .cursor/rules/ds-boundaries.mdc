@@ -1,0 +1,31 @@
+---
+description: DS-owned vs product-owned paths; upstream merges stay conflict-free
+alwaysApply: true
+---
+
+# Template boundaries
+
+Designers and agents **must not edit** DS-owned paths. Request new shared APIs from the template maintainer, then merge `upstream`.
+
+## DS-owned (read-only in product repos)
+
+- `css/**`
+- `components.js`, `components-date.js`, `styles.css`
+- `gallery/**`
+- `CHANGELOG.md` (maintainer release notes)
+
+## Product-owned
+
+- `features/**`
+- `docs/PRODUCT-VOICE.md`
+- `app.js` (nav routes and `FEATURE_MOUNTERS` only)
+- `i18n.js` (product strings)
+- `PROGRESS.md`
+
+## When something is missing
+
+- **Reusable:** ask maintainer to add upstream, then `git fetch upstream && git merge upstream/main`.
+- **One-off:** Figma MCP + implement in `features/` using tokens and `DS.*`; do not fork `components.js`.
+- **Extend:** wrappers in `features/shared/`.
+
+Do not add non-Cursor agent desktop config folders to this repo.

@@ -1,0 +1,3381 @@
+/* ═══════════════════════════════════════════
+   Design System Components
+   One component = one set of styles.
+   Screens only change content, never styling.
+   ═══════════════════════════════════════════ */
+
+/* ─── Button (Air Components - Figma 22505:15481) ───
+   variant: contained | outlined | text
+   color:   primary | secondary | error | warning | info | success
+   size:    xlarge | large | medium | small | xsmall
+   Legacy aliases kept: primary/outline/ghost, sm, inline
+───────────────────────────────────────────────────── */
+
+.ds-btn {
+  --ds-btn-bg: transparent;
+  --ds-btn-bg-hover: transparent;
+  --ds-btn-fg: var(--ds-text-primary);
+  --ds-btn-border: transparent;
+  --ds-btn-border-hover: transparent;
+  --ds-btn-focus: var(--ds-primary);
+  --ds-btn-icon-filter: none;
+
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 7px 16px;
+  font-family: var(--ds-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--ds-btn-fg);
+  background: var(--ds-btn-bg);
+  border: 1px solid var(--ds-btn-border);
+  border-radius: var(--ds-radius-md);
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.ds-btn:hover:not(:disabled) {
+  background: var(--ds-btn-bg-hover);
+  border-color: var(--ds-btn-border-hover);
+}
+
+.ds-btn:focus {
+  outline: none;
+}
+
+.ds-btn:focus-visible:not(:disabled) {
+  box-shadow:
+    0 0 0 2px var(--ds-bg-app),
+    0 0 0 4px var(--ds-btn-focus);
+}
+
+.ds-btn:disabled {
+  cursor: not-allowed;
+}
+
+.ds-btn--full-width,
+.ds-btn--block {
+  display: flex;
+  width: 100%;
+}
+
+.ds-btn--inline {
+  width: auto;
+  min-width: 0;
+}
+
+.ds-btn__label {
+  display: inline-block;
+}
+
+.ds-btn__icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  display: block;
+  filter: var(--ds-btn-icon-filter);
+  pointer-events: none;
+}
+
+/* ── Sizes ── */
+
+.ds-btn--xlarge {
+  min-height: 56px;
+  height: 56px;
+  padding: 7px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.ds-btn--xlarge .ds-btn__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.ds-btn--large {
+  min-height: 48px;
+  height: 48px;
+  padding: 7px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.ds-btn--large .ds-btn__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.ds-btn--medium {
+  min-height: 40px;
+  height: 40px;
+  padding: 7px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.ds-btn--medium .ds-btn__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.ds-btn--small,
+.ds-btn--sm {
+  min-height: 32px;
+  height: 32px;
+  padding: 5px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  gap: 6px;
+}
+
+.ds-btn--small .ds-btn__icon,
+.ds-btn--sm .ds-btn__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.ds-btn--xsmall {
+  min-height: 24px;
+  height: 24px;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.25px;
+  gap: 4px;
+  border-radius: var(--ds-radius-sm);
+}
+
+.ds-btn--xsmall .ds-btn__icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Icon-only - square hit target matching size height */
+
+.ds-btn--icon-only {
+  padding-left: 0;
+  padding-right: 0;
+  aspect-ratio: 1 / 1;
+}
+
+.ds-btn--icon-only.ds-btn--xlarge { width: 56px; min-width: 56px; }
+.ds-btn--icon-only.ds-btn--large { width: 48px; min-width: 48px; }
+.ds-btn--icon-only.ds-btn--medium { width: 40px; min-width: 40px; }
+.ds-btn--icon-only.ds-btn--small,
+.ds-btn--icon-only.ds-btn--sm { width: 32px; min-width: 32px; }
+.ds-btn--icon-only.ds-btn--xsmall { width: 24px; min-width: 24px; }
+
+/* ── Color tokens (shared by variants) ── */
+
+.ds-btn--primary {
+  --ds-btn-main: var(--ds-primary);
+  --ds-btn-main-hover: var(--ds-primary-hover);
+  --ds-btn-contrast: var(--ds-primary-contrast);
+  --ds-btn-outlined-border: var(--ds-primary-outlined-border);
+  --ds-btn-outlined-hover: var(--ds-primary-outlined-hover);
+  --ds-btn-focus: var(--ds-primary);
+}
+
+.ds-btn--secondary {
+  --ds-btn-main: var(--ds-secondary);
+  --ds-btn-main-hover: var(--ds-secondary-hover);
+  --ds-btn-contrast: var(--ds-secondary-contrast);
+  --ds-btn-outlined-border: var(--ds-secondary-outlined-border);
+  --ds-btn-outlined-hover: var(--ds-secondary-outlined-hover);
+  --ds-btn-focus: var(--ds-secondary);
+}
+
+.ds-btn--error {
+  --ds-btn-main: var(--ds-error-main);
+  --ds-btn-main-hover: var(--ds-error-hover);
+  --ds-btn-contrast: var(--ds-error-contrast);
+  --ds-btn-outlined-border: var(--ds-error-outlined-border);
+  --ds-btn-outlined-hover: var(--ds-error-outlined-hover);
+  --ds-btn-focus: var(--ds-error-main);
+}
+
+.ds-btn--warning {
+  --ds-btn-main: var(--ds-warning);
+  --ds-btn-main-hover: var(--ds-warning-hover);
+  --ds-btn-contrast: var(--ds-warning-contrast);
+  --ds-btn-outlined-border: var(--ds-warning-outlined-border);
+  --ds-btn-outlined-hover: var(--ds-warning-outlined-hover);
+  --ds-btn-focus: var(--ds-warning);
+}
+
+.ds-btn--info {
+  --ds-btn-main: var(--ds-info);
+  --ds-btn-main-hover: var(--ds-info-hover);
+  --ds-btn-contrast: var(--ds-info-contrast);
+  --ds-btn-outlined-border: var(--ds-info-outlined-border);
+  --ds-btn-outlined-hover: var(--ds-info-outlined-hover);
+  --ds-btn-focus: var(--ds-info);
+}
+
+.ds-btn--success {
+  --ds-btn-main: var(--ds-success);
+  --ds-btn-main-hover: var(--ds-success-hover);
+  --ds-btn-contrast: var(--ds-success-contrast);
+  --ds-btn-outlined-border: var(--ds-success-outlined-border);
+  --ds-btn-outlined-hover: var(--ds-success-outlined-hover);
+  --ds-btn-focus: var(--ds-success);
+}
+
+/* ── Contained ── */
+
+.ds-btn--contained {
+  --ds-btn-bg: var(--ds-btn-main);
+  --ds-btn-bg-hover: var(--ds-btn-main-hover);
+  --ds-btn-fg: var(--ds-btn-contrast);
+  --ds-btn-border: var(--ds-btn-main);
+  --ds-btn-border-hover: var(--ds-btn-main-hover);
+  --ds-btn-icon-filter: brightness(0) invert(1);
+}
+
+.ds-btn--contained.ds-btn--warning {
+  --ds-btn-icon-filter: brightness(0) saturate(100%);
+}
+
+.ds-btn--contained:disabled {
+  --ds-btn-bg: var(--ds-bg-disabled);
+  --ds-btn-bg-hover: var(--ds-bg-disabled);
+  --ds-btn-fg: var(--ds-content-disabled);
+  --ds-btn-border: var(--ds-bg-disabled);
+  --ds-btn-border-hover: var(--ds-bg-disabled);
+  --ds-btn-icon-filter: none;
+  opacity: 1;
+}
+
+/* ── Outlined ── */
+
+.ds-btn--outlined,
+.ds-btn--outline {
+  --ds-btn-bg: var(--ds-bg-app);
+  --ds-btn-bg-hover: var(--ds-btn-outlined-hover);
+  --ds-btn-fg: var(--ds-btn-main);
+  --ds-btn-border: var(--ds-btn-outlined-border);
+  --ds-btn-border-hover: var(--ds-btn-main);
+  --ds-btn-icon-filter: none;
+}
+
+.ds-btn--outlined.ds-btn--warning,
+.ds-btn--outline.ds-btn--warning {
+  --ds-btn-fg: var(--ds-warning-strong);
+}
+
+.ds-btn--outlined:disabled,
+.ds-btn--outline:disabled {
+  --ds-btn-bg: transparent;
+  --ds-btn-bg-hover: transparent;
+  --ds-btn-fg: var(--ds-content-disabled);
+  --ds-btn-border: var(--ds-border);
+  --ds-btn-border-hover: var(--ds-border);
+}
+
+/* Legacy outline without color class → primary */
+.ds-btn--outline:not(.ds-btn--primary):not(.ds-btn--secondary):not(.ds-btn--error):not(.ds-btn--warning):not(.ds-btn--info):not(.ds-btn--success) {
+  --ds-btn-main: var(--ds-primary);
+  --ds-btn-main-hover: var(--ds-primary-hover);
+  --ds-btn-contrast: var(--ds-primary-contrast);
+  --ds-btn-outlined-border: var(--ds-primary-outlined-border);
+  --ds-btn-outlined-hover: var(--ds-primary-outlined-hover);
+  --ds-btn-focus: var(--ds-primary);
+}
+
+/* ── Text / ghost ── */
+
+.ds-btn--text,
+.ds-btn--ghost {
+  --ds-btn-bg: transparent;
+  --ds-btn-bg-hover: var(--ds-btn-outlined-hover, var(--ds-bg-platform));
+  --ds-btn-fg: var(--ds-btn-main, var(--ds-text-secondary));
+  --ds-btn-border: transparent;
+  --ds-btn-border-hover: transparent;
+}
+
+.ds-btn--text.ds-btn--warning,
+.ds-btn--ghost.ds-btn--warning {
+  --ds-btn-fg: var(--ds-warning-strong);
+}
+
+.ds-btn--text:not(.ds-btn--primary):not(.ds-btn--secondary):not(.ds-btn--error):not(.ds-btn--warning):not(.ds-btn--info):not(.ds-btn--success),
+.ds-btn--ghost:not(.ds-btn--primary):not(.ds-btn--secondary):not(.ds-btn--error):not(.ds-btn--warning):not(.ds-btn--info):not(.ds-btn--success) {
+  --ds-btn-fg: var(--ds-text-secondary);
+  --ds-btn-bg-hover: var(--ds-bg-platform);
+  --ds-btn-focus: var(--ds-primary);
+}
+
+.ds-btn--text:not(.ds-btn--primary):not(.ds-btn--secondary):not(.ds-btn--error):not(.ds-btn--warning):not(.ds-btn--info):not(.ds-btn--success):hover:not(:disabled),
+.ds-btn--ghost:not(.ds-btn--primary):not(.ds-btn--secondary):not(.ds-btn--error):not(.ds-btn--warning):not(.ds-btn--info):not(.ds-btn--success):hover:not(:disabled) {
+  color: var(--ds-text-primary);
+}
+
+.ds-btn--text:disabled,
+.ds-btn--ghost:disabled {
+  --ds-btn-bg: transparent;
+  --ds-btn-bg-hover: transparent;
+  --ds-btn-fg: var(--ds-content-disabled);
+}
+
+/* Legacy contained-primary alias: .ds-btn--primary alone (no contained/outlined/text) */
+.ds-btn--primary:not(.ds-btn--contained):not(.ds-btn--outlined):not(.ds-btn--outline):not(.ds-btn--text):not(.ds-btn--ghost) {
+  --ds-btn-bg: var(--ds-primary);
+  --ds-btn-bg-hover: var(--ds-primary-hover);
+  --ds-btn-fg: var(--ds-primary-contrast);
+  --ds-btn-border: var(--ds-primary);
+  --ds-btn-border-hover: var(--ds-primary-hover);
+  --ds-btn-icon-filter: brightness(0) invert(1);
+}
+
+.ds-btn--primary:not(.ds-btn--contained):not(.ds-btn--outlined):not(.ds-btn--outline):not(.ds-btn--text):not(.ds-btn--ghost):disabled {
+  --ds-btn-bg: var(--ds-bg-disabled);
+  --ds-btn-bg-hover: var(--ds-bg-disabled);
+  --ds-btn-fg: var(--ds-content-disabled);
+  --ds-btn-border: var(--ds-bg-disabled);
+  --ds-btn-icon-filter: none;
+}
+
+.ds-btn.is-loading {
+  gap: 8px;
+  pointer-events: none;
+}
+
+/* ─── Tabs ─── */
+
+.ds-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid var(--ds-divider);
+}
+
+.ds-tabs__tab {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 12px 16px;
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--ds-text-secondary);
+  cursor: pointer;
+}
+
+.ds-tabs__tab:hover {
+  color: var(--ds-text-primary);
+}
+
+.ds-tabs__tab.is-active {
+  color: var(--ds-accent);
+  border-bottom-color: var(--ds-accent);
+}
+
+/* ─── Search / fields ─── */
+
+.ds-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-bg-app);
+  min-width: 220px;
+  flex: 1 1 220px;
+  max-width: 360px;
+}
+
+.ds-search--compact {
+  min-width: 0;
+  max-width: none;
+  width: auto;
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin: 8px;
+  min-height: 32px;
+  height: 32px;
+  max-height: 32px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.ds-search--compact .ds-search__icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.ds-search--compact .ds-search__input {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.ds-search__icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  opacity: 0.55;
+}
+
+.ds-search__input {
+  flex: 1 1 auto;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-text-primary);
+  min-width: 0;
+}
+
+.ds-search__input::placeholder {
+  color: var(--ds-text-muted);
+}
+
+.ds-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.ds-field__label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--ds-text-primary);
+}
+
+.ds-field__helper {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--ds-text-secondary);
+}
+
+/* Anything the person can fix in the field they are looking at belongs here, not in a
+   toast. ds-tf has carried this since it shipped; ds-field had no error state at all,
+   so every message ended up detached at the bottom of the form. */
+.ds-field.is-error .ds-field__input {
+  border-color: var(--ds-error-main);
+}
+
+.ds-field.is-error .ds-field__input:focus {
+  outline: 2px solid var(--ds-error-outlined-hover);
+  border-color: var(--ds-error-main);
+}
+
+.ds-field.is-error .ds-field__helper {
+  color: var(--ds-error-main);
+}
+
+.ds-field__input {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-text-primary);
+  background: var(--ds-bg-app);
+  box-sizing: border-box;
+}
+
+.ds-field__input:focus {
+  outline: 2px solid var(--ds-accent-subtle);
+  border-color: var(--ds-accent);
+}
+
+/* A disabled ds-field had no styling at all, so a field switched off in code still read
+   as editable. ds-tf and ds-phone already carry their own is-disabled treatment. */
+.ds-field__input:disabled {
+  color: var(--ds-text-disabled);
+  background: var(--ds-bg-disabled);
+  cursor: default;
+}
+
+.ds-field.is-disabled .ds-field__label {
+  color: var(--ds-text-disabled);
+}
+
+.ds-field__select {
+  appearance: none;
+  background-image: var(--ds-chevron-down-icon);
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  padding-right: 36px;
+}
+
+/* Searchable single-select (long catalogs: partners, customers) */
+.ds-search-select__wrap {
+  position: relative;
+  width: 100%;
+}
+
+.ds-search-select__trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-bg-app);
+  color: var(--ds-text-primary);
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.ds-search-select__trigger:hover {
+  background: var(--ds-bg-platform);
+}
+
+.ds-search-select.is-disabled .ds-search-select__trigger {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background: var(--ds-bg-platform);
+}
+
+.ds-search-select.is-disabled .ds-search-select__trigger:hover {
+  background: var(--ds-bg-platform);
+}
+
+.ds-search-select__trigger.is-open,
+.ds-search-select__trigger:focus {
+  outline: none;
+  border-color: var(--ds-accent);
+  box-shadow: 0 0 0 1px var(--ds-accent);
+  background: var(--ds-bg-app);
+}
+
+.ds-search-select__value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ds-search-select__chevron {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  transition: transform 0.15s ease;
+}
+
+.ds-search-select__trigger.is-open .ds-search-select__chevron {
+  transform: rotate(180deg);
+}
+
+.ds-search-select__panel {
+  display: flex;
+  flex-direction: column;
+  max-height: min(280px, 50vh);
+  background: var(--ds-bg-app);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  box-shadow: 0 8px 24px rgba(20, 22, 24, 0.16);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ds-search-select__panel[hidden] {
+  display: none !important;
+}
+
+.ds-search-select__search.ds-search {
+  min-width: 0;
+  max-width: none;
+  width: auto;
+  flex: 0 0 auto;
+  align-self: stretch;
+  margin: 8px;
+}
+
+.ds-search-select__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 4px;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ds-search-select__option {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-text-primary);
+}
+
+.ds-search-select__option:hover,
+.ds-search-select__option.is-active {
+  background: var(--ds-bg-platform);
+}
+
+.ds-search-select__option.is-selected {
+  font-weight: 600;
+}
+
+.ds-search-select__empty {
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--ds-text-secondary);
+}
+
+.ds-search-select__option--create {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-accent);
+  font-weight: 600;
+}
+
+.ds-search-select__option--create:hover,
+.ds-search-select__option--create.is-active {
+  background: var(--ds-bg-platform);
+}
+
+.ds-search-select__separator {
+  height: 1px;
+  margin: 4px 0;
+  background: var(--ds-divider);
+  list-style: none;
+}
+
+/* ─── TextField (Air Components - Figma 18128:89412) ───
+   Floating-label text input. The label rests on the value line and floats up
+   once the field is focused or filled.
+
+   The label only floats at xlarge/large: at medium/small the box is too short
+   to stack a 12px label above a 24px value line, so the Figma variant matrix
+   drops the label entirely once a value exists. Medium/small mirror that by
+   fading the label out instead of floating it.
+
+   The input is written before the label in the DOM so the float can be driven
+   by `:focus` / `:not(:placeholder-shown)` adjacent-sibling selectors with no
+   JS; `order` puts the label back on top visually for the multiline variant. */
+
+.ds-tf {
+  --ds-tf-accent: var(--ds-primary);
+  --ds-tf-height: var(--ds-size-medium);
+  --ds-tf-border: var(--ds-input-border);
+  --ds-tf-bg: transparent;
+  --ds-tf-label: var(--ds-text-secondary);
+  --ds-tf-helper: var(--ds-text-secondary);
+  --ds-tf-value: var(--ds-text-primary);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--ds-font-family);
+}
+
+.ds-tf__box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--ds-tf-height);
+  padding: 0 12px;
+  border: 1px solid var(--ds-tf-border);
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-tf-bg);
+  transition: background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+/* ── Sizes ── */
+
+.ds-tf--xlarge { --ds-tf-height: var(--ds-size-xlarge); }
+.ds-tf--large  { --ds-tf-height: var(--ds-size-large); }
+.ds-tf--medium { --ds-tf-height: var(--ds-size-medium); }
+.ds-tf--small  { --ds-tf-height: var(--ds-size-small); }
+
+/* ── Colors ── */
+
+.ds-tf--primary { --ds-tf-accent: var(--ds-primary); }
+.ds-tf--error   { --ds-tf-accent: var(--ds-error-main); }
+.ds-tf--warning { --ds-tf-accent: var(--ds-warning); }
+.ds-tf--success { --ds-tf-accent: var(--ds-success); }
+.ds-tf--info    { --ds-tf-accent: var(--ds-info); }
+
+/* ── Background / border options (Figma: backgroundColor, showBorder) ── */
+
+.ds-tf--filled { --ds-tf-bg: var(--ds-input-bg-filled); }
+
+.ds-tf--borderless .ds-tf__box {
+  border-color: transparent;
+}
+
+/* ── States ── */
+
+/* Layered so the hover wash composites over the filled background
+   instead of replacing it, matching the stacked fills in Figma. */
+.ds-tf:not(.is-disabled) .ds-tf__box:hover {
+  background:
+    linear-gradient(var(--ds-state-hover), var(--ds-state-hover)),
+    var(--ds-tf-bg);
+}
+
+.ds-tf:not(.is-disabled) .ds-tf__box:focus-within {
+  border-color: var(--ds-tf-accent);
+  box-shadow: 0 0 0 1px var(--ds-tf-accent);
+  background: var(--ds-bg-app);
+}
+
+.ds-tf.is-error {
+  --ds-tf-accent: var(--ds-error-main);
+  --ds-tf-border: var(--ds-error-main);
+  --ds-tf-label: var(--ds-error-main);
+  --ds-tf-helper: var(--ds-error-main);
+}
+
+.ds-tf.is-disabled {
+  --ds-tf-label: var(--ds-text-disabled);
+  --ds-tf-helper: var(--ds-text-disabled);
+  --ds-tf-value: var(--ds-text-disabled);
+}
+
+.ds-tf.is-disabled .ds-tf__box,
+.ds-tf.is-disabled .ds-tf__input {
+  cursor: not-allowed;
+}
+
+/* ── Field, label, input ── */
+
+.ds-tf__field {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.ds-tf__label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--ds-tf-label);
+  white-space: nowrap;
+  overflow: hidden;
+  pointer-events: none;
+  transition: transform 0.12s ease, color 0.12s ease, opacity 0.12s ease;
+}
+
+.ds-tf__label-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ds-tf__required {
+  flex: 0 0 auto;
+  color: var(--ds-error-main);
+}
+
+.ds-tf__input {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 24px;
+  box-sizing: border-box;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--ds-tf-value);
+  transition: transform 0.12s ease;
+}
+
+/* The placeholder only becomes visible once the label is out of its way -
+   either floated (focus) or absent altogether. */
+.ds-tf__input::placeholder {
+  color: transparent;
+  transition: color 0.12s ease;
+}
+
+.ds-tf__input:focus::placeholder,
+.ds-tf--no-label .ds-tf__input::placeholder {
+  color: var(--ds-input-placeholder);
+}
+
+/* ── Floating label (xlarge / large only) ──
+   scale(0.75) takes the 16px/24px resting label to the 12px/18px floated one;
+   -14px / +8px are the label and value offsets from the box centre in Figma
+   (xlarge 56px and large 48px both resolve to the same pair). */
+
+.ds-tf--xlarge:not(.ds-tf--multiline) .ds-tf__input:focus + .ds-tf__label,
+.ds-tf--xlarge:not(.ds-tf--multiline) .ds-tf__input:not(:placeholder-shown) + .ds-tf__label,
+.ds-tf--large:not(.ds-tf--multiline) .ds-tf__input:focus + .ds-tf__label,
+.ds-tf--large:not(.ds-tf--multiline) .ds-tf__input:not(:placeholder-shown) + .ds-tf__label {
+  transform: translateY(calc(-50% - 14px)) scale(0.75);
+}
+
+.ds-tf--xlarge:not(.ds-tf--multiline) .ds-tf__input:focus,
+.ds-tf--xlarge:not(.ds-tf--multiline) .ds-tf__input:not(:placeholder-shown),
+.ds-tf--large:not(.ds-tf--multiline) .ds-tf__input:focus,
+.ds-tf--large:not(.ds-tf--multiline) .ds-tf__input:not(:placeholder-shown) {
+  transform: translateY(calc(-50% + 8px));
+}
+
+.ds-tf--xlarge .ds-tf__box:focus-within .ds-tf__label,
+.ds-tf--large .ds-tf__box:focus-within .ds-tf__label {
+  color: var(--ds-tf-accent);
+}
+
+.ds-tf.is-error .ds-tf__box:focus-within .ds-tf__label,
+.ds-tf.is-disabled .ds-tf__box:focus-within .ds-tf__label {
+  color: var(--ds-tf-label);
+}
+
+/* ── Non-floating label (medium / small) ──
+   Multiline is excluded: its label stacks in flow, so it shrinks rather than
+   fading no matter which size the box is. */
+
+.ds-tf--medium:not(.ds-tf--multiline) .ds-tf__input:focus + .ds-tf__label,
+.ds-tf--medium:not(.ds-tf--multiline) .ds-tf__input:not(:placeholder-shown) + .ds-tf__label,
+.ds-tf--small:not(.ds-tf--multiline) .ds-tf__input:focus + .ds-tf__label,
+.ds-tf--small:not(.ds-tf--multiline) .ds-tf__input:not(:placeholder-shown) + .ds-tf__label {
+  opacity: 0;
+}
+
+/* ── Prefix / suffix adornments (Figma .TextFieldSuffixAdornments 18044:87688) ── */
+
+.ds-tf__prefix {
+  flex: 0 0 auto;
+  margin-right: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ds-text-secondary);
+  white-space: nowrap;
+}
+
+.ds-tf__suffix {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin-left: 8px;
+  padding: 8px 0;
+}
+
+/* A 24px glyph cannot clear the 32px box, so small steps its adornments down. */
+.ds-tf--small .ds-tf__suffix {
+  padding: 4px 0;
+}
+
+.ds-tf__divider {
+  align-self: stretch;
+  flex: 0 0 1px;
+  width: 1px;
+  margin: 0 12px 0 7px;
+  background: var(--ds-divider);
+}
+
+.ds-tf__icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.ds-tf--small .ds-tf__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.ds-tf__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 6px;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ds-tf__action:hover:not(:disabled) {
+  background: var(--ds-state-hover);
+}
+
+.ds-tf__action:focus-visible {
+  outline: 2px solid var(--ds-tf-accent);
+  outline-offset: -2px;
+}
+
+.ds-tf__action:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ds-tf__action .ds-tf__icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Bottom labels - helper text + character counter (Figma 20072:134268) ── */
+
+.ds-tf__bottom {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.ds-tf__helper {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.25px;
+  color: var(--ds-tf-helper);
+}
+
+.ds-tf__counter {
+  flex: 0 0 auto;
+  max-width: 64px;
+  margin-left: auto;
+  padding-right: 12px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.25px;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--ds-tf-helper);
+}
+
+/* ── Multiline - TextareaAutosize (Figma 18300:125928) ──
+   Same shell, but the label sits in flow above a textarea that grows with its
+   value. `order` restores label-then-value now that the box is a column. */
+
+.ds-tf--multiline .ds-tf__box {
+  height: auto;
+  /* Figma gives the textarea its own 76px floor rather than a size height */
+  min-height: 76px;
+  align-items: stretch;
+  padding: 8px 12px;
+}
+
+.ds-tf--multiline .ds-tf__field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+}
+
+.ds-tf--multiline .ds-tf__label {
+  position: static;
+  order: 1;
+  transform: none;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.25px;
+  transition: font-size 0.12s ease, line-height 0.12s ease, color 0.12s ease;
+}
+
+.ds-tf--multiline .ds-tf__input {
+  position: static;
+  order: 2;
+  height: auto;
+  min-height: 24px;
+  transform: none;
+  overflow: hidden;
+  resize: none;
+}
+
+/* Resting: nothing typed and not focused, so the label takes the value line. */
+.ds-tf--multiline .ds-tf__input:placeholder-shown:not(:focus) ~ .ds-tf__label {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+.ds-tf--multiline .ds-tf__box:focus-within .ds-tf__label {
+  color: var(--ds-tf-accent);
+}
+
+.ds-tf--multiline.is-error .ds-tf__box:focus-within .ds-tf__label,
+.ds-tf--multiline.is-disabled .ds-tf__box:focus-within .ds-tf__label {
+  color: var(--ds-tf-label);
+}
+
+.ds-tf--multiline.ds-tf--resizable .ds-tf__input {
+  resize: vertical;
+}
+
+/* Phone number - country dial + national input (Air DS) */
+.ds-phone-field {
+  position: relative;
+}
+
+.ds-phone__wrap {
+  position: relative;
+  width: 100%;
+}
+
+.ds-phone {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-bg-app);
+  color: var(--ds-text-primary);
+  transition: background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.ds-phone--xlarge {
+  height: 56px;
+}
+
+.ds-phone--large {
+  height: 48px;
+}
+
+.ds-phone--medium {
+  height: 40px;
+}
+
+.ds-phone--small {
+  height: 32px;
+}
+
+.ds-phone.is-hover:not(.is-disabled):not(.is-focused):not(.is-expanded),
+.ds-phone:hover:not(.is-disabled):not(.is-focused):not(.is-expanded) {
+  background: var(--ds-bg-platform);
+}
+
+.ds-phone.is-focused,
+.ds-phone.is-expanded {
+  border-color: var(--ds-accent);
+  box-shadow: 0 0 0 1px var(--ds-accent);
+  background: var(--ds-bg-app);
+}
+
+.ds-phone.is-error {
+  border-color: var(--ds-border-error);
+  box-shadow: none;
+}
+
+.ds-phone.is-error.is-hover:not(.is-disabled),
+.ds-phone.is-error:hover:not(.is-disabled) {
+  background: var(--ds-bg-platform);
+  border-color: var(--ds-border-error);
+}
+
+.ds-phone.is-error.is-focused,
+.ds-phone.is-error.is-expanded {
+  border-color: var(--ds-border-error);
+  box-shadow: 0 0 0 1px var(--ds-border-error);
+  background: var(--ds-bg-app);
+}
+
+.ds-phone.is-disabled {
+  background: var(--ds-bg-app);
+  color: var(--ds-text-disabled);
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.ds-phone__country {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  height: 100%;
+  padding: 0 8px 0 12px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.ds-phone.is-disabled .ds-phone__country {
+  cursor: not-allowed;
+}
+
+.ds-phone__flag {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.ds-phone--small .ds-phone__flag {
+  font-size: 14px;
+}
+
+.ds-phone__chevron,
+.ds-phone__country .ds-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.ds-phone__divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 8px 0;
+  background: var(--ds-divider);
+  flex: 0 0 auto;
+}
+
+.ds-phone--small .ds-phone__divider {
+  margin: 6px 0;
+}
+
+.ds-phone__body {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0 12px 0 10px;
+}
+
+.ds-phone__dial {
+  flex: 0 0 auto;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-text-primary);
+  white-space: nowrap;
+}
+
+.ds-phone--small .ds-phone__dial,
+.ds-phone--small .ds-phone__input {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.ds-phone.is-disabled .ds-phone__dial,
+.ds-phone.is-disabled .ds-phone__input {
+  color: var(--ds-text-disabled);
+}
+
+.ds-phone__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-text-primary);
+  padding: 0;
+}
+
+.ds-phone__input::placeholder {
+  color: var(--ds-text-muted);
+}
+
+.ds-phone__dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  max-height: 280px;
+  background: var(--ds-bg-app);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  box-shadow: 0 8px 24px rgba(20, 22, 24, 0.12);
+  overflow: hidden;
+}
+
+.ds-phone__dropdown[hidden] {
+  display: none !important;
+}
+
+.ds-phone__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ds-divider);
+  flex: 0 0 auto;
+}
+
+.ds-phone__search-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.ds-phone__search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-text-primary);
+}
+
+.ds-phone__search-input::placeholder {
+  color: var(--ds-text-muted);
+}
+
+.ds-phone__list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  overflow-y: auto;
+  flex: 1 1 auto;
+}
+
+.ds-phone__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-text-primary);
+}
+
+.ds-phone__option:hover,
+.ds-phone__option.is-selected {
+  background: var(--ds-bg-platform);
+}
+
+.ds-phone__option-flag {
+  font-size: 18px;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+.ds-phone__option-label {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ds-multi-select {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 180px;
+  overflow: auto;
+  padding: 8px;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-bg-app);
+}
+
+.ds-multi-select__option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: var(--ds-radius-sm);
+  font-size: 14px;
+  color: var(--ds-text-primary);
+  cursor: pointer;
+}
+
+.ds-multi-select__option:hover {
+  background: var(--ds-bg-platform);
+}
+
+.ds-multi-select__option input {
+  accent-color: var(--ds-accent);
+}
+
+.ds-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ds-radio-group__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  cursor: pointer;
+}
+
+.ds-radio-group__option:hover {
+  background: var(--ds-bg-platform);
+}
+
+.ds-radio-group__option.is-selected {
+  border-color: var(--ds-accent);
+  background: var(--ds-bg-platform);
+}
+
+.ds-radio-group__option input {
+  margin-top: 3px;
+  accent-color: var(--ds-accent);
+}
+
+.ds-radio-group__copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+
+.ds-radio-group__label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--ds-text-primary);
+}
+
+.ds-radio-group__description {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--ds-text-secondary);
+}
+
+/* ─── Menu ─── */
+
+.ds-menu-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.ds-menu {
+  position: fixed;
+  z-index: 1300;
+  min-width: 180px;
+  padding: 6px;
+  background: var(--ds-bg-app);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  box-shadow: 0 8px 24px rgba(20, 22, 24, 0.16);
+}
+
+.ds-menu[hidden] {
+  display: none !important;
+}
+
+.ds-menu__item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 8px 12px;
+  border-radius: var(--ds-radius-sm);
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ds-text-primary);
+  cursor: pointer;
+}
+
+.ds-menu__item:hover {
+  background: var(--ds-accent-subtle);
+}
+
+/* There was no disabled style at all, so an item switched off in code rendered in full
+   colour with a pointer cursor and a live hover highlight. Hover is overridden rather than
+   dropped, because the rule above would otherwise still fire. */
+.ds-menu__item:disabled,
+.ds-menu__item:disabled:hover {
+  color: var(--ds-text-disabled);
+  background: none;
+  cursor: default;
+}
+
+.ds-menu__item--danger:disabled {
+  color: var(--ds-text-disabled);
+}
+
+.ds-menu__item--danger {
+  color: var(--ds-error);
+}
+
+.ds-menu__separator {
+  height: 1px;
+  margin: 4px 0;
+  background: var(--ds-divider);
+}
+
+/* ─── SplitButton (Air Components - Figma 37599:428636) ───
+   A ds-btn main action fused to a caret ds-btn that opens a ds-menu.
+───────────────────────────────────────────────────── */
+
+.ds-splitbtn {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.ds-splitbtn__main {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ds-splitbtn__menu-wrap {
+  display: inline-flex;
+}
+
+.ds-splitbtn__toggle {
+  position: relative;
+  width: auto;
+  min-width: 0;
+  margin-left: -1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.ds-splitbtn--contained .ds-splitbtn__toggle::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  bottom: 20%;
+  left: 0;
+  width: 1px;
+  background: currentColor;
+  opacity: 0.28;
+}
+
+/* ─── Modal ─── */
+
+.ds-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1250;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(20, 22, 24, 0.45);
+}
+
+.ds-modal {
+  width: min(var(--ds-modal-width, 600px), 100%);
+  max-height: min(90vh, 780px);
+  display: flex;
+  flex-direction: column;
+  background: var(--ds-bg-app);
+  border-radius: 8px;
+  box-shadow:
+    0 18px 28px rgba(20, 22, 24, 0.15),
+    0 0 1px rgba(20, 22, 24, 0.31);
+  overflow: hidden;
+}
+
+/*
+ * Air Modal (Figma 6683:123679). Tokens from MODAL_LAYOUT in components.js.
+ * Default: no dividers · body horizontal inset only · title 68px · actions 88px.
+ * dividers: true | { header, footer } toggles showHeaderDivider / showFooterDivider.
+ * Product rule: confirms + simple forms off; dense/scrollable bodies use both (see ARCHITECTURE).
+ */
+.ds-modal__header {
+  flex: 0 0 auto;
+  padding: var(--ds-modal-header-padding, 24px 24px 16px);
+  border-bottom: var(--ds-modal-header-divider, none);
+}
+
+.ds-modal__header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ds-modal__header-end {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ds-modal__header-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.ds-modal__tag {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.ds-modal__tag--base {
+  color: var(--ds-text-secondary, #64686b);
+  background: var(--ds-bg-subtle, #f1f3f5);
+}
+
+.ds-modal__tag--purple {
+  color: #7456b6;
+  background: #eee8f6;
+}
+
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  max-width: 100%;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.ds-tag--medium {
+  height: 28px;
+  padding: 0 12px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.ds-tag__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ds-tag__icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.ds-tag__glyph {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.ds-tag__glyph--play {
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  background: none;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid currentColor;
+}
+
+.ds-tag__glyph--snowflake,
+.ds-tag__glyph--sun,
+.ds-tag__glyph--fan,
+.ds-tag__glyph--droplet,
+.ds-tag__glyph--warning {
+  border-radius: 2px;
+}
+
+.ds-tag--success {
+  color: var(--ds-success);
+  background: var(--ds-success-outlined-hover);
+}
+
+.ds-tag--error {
+  color: var(--ds-error-main);
+  background: var(--ds-error-outlined-hover);
+}
+
+.ds-tag--warning {
+  color: var(--ds-warning-strong);
+  background: var(--ds-warning-outlined-hover);
+}
+
+.ds-tag--info {
+  color: var(--ds-info);
+  background: var(--ds-info-outlined-hover);
+}
+
+.ds-tag--primary {
+  color: var(--ds-primary);
+  background: var(--ds-primary-outlined-hover);
+}
+
+.ds-tag--neutral {
+  color: var(--ds-text-secondary);
+  background: var(--ds-bg-disabled);
+}
+
+.ds-table__num {
+  text-align: right;
+}
+
+.ds-table__num .ds-table__cell,
+.ds-table__num .ds-table__sort-btn {
+  text-align: right;
+  width: 100%;
+}
+
+.ds-modal__title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--ds-modal-title-size, 20px);
+  font-weight: 600;
+  line-height: var(--ds-modal-title-line-height, 28px);
+  color: var(--ds-navy);
+}
+
+.ds-modal__close.ds-btn {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.ds-modal__body {
+  padding: var(--ds-modal-body-padding, 0 24px);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-modal-body-gap, 16px);
+  max-height: var(--ds-modal-body-max-height, 680px);
+  flex: var(--ds-modal-body-flex, 1 1 auto);
+  min-height: 0;
+}
+
+.ds-modal__message {
+  margin: 0;
+  font-size: var(--ds-modal-message-size, 16px);
+  line-height: var(--ds-modal-message-line-height, 24px);
+  color: var(--ds-text-primary);
+}
+
+.ds-modal__footer {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--ds-modal-footer-margin-top, 0);
+  padding: var(--ds-modal-footer-padding, 24px);
+  border-top: var(--ds-modal-footer-divider, none);
+}
+
+.ds-modal__footer--split {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ds-modal__footer-start {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--ds-text-secondary, #5c6670);
+}
+
+.ds-modal__footer-actions {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/*
+ * Right-edge slide-in panel (DS.drawer). Same header/body/footer shape as .ds-modal, sized for
+ * longer, data-heavy tasks (e.g. Bulk Add) that shouldn't be squeezed into a modal's width.
+ */
+.ds-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(20, 22, 24, 0);
+  transition: background 0.24s ease;
+}
+
+.ds-drawer-backdrop--open {
+  background: rgba(20, 22, 24, 0.45);
+}
+
+.ds-drawer {
+  width: min(var(--ds-drawer-width, 1200px), 92vw);
+  height: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--ds-bg-app);
+  box-shadow:
+    -18px 0 28px rgba(20, 22, 24, 0.15),
+    0 0 1px rgba(20, 22, 24, 0.31);
+  transform: translateX(100%);
+  transition: transform 0.24s ease;
+}
+
+.ds-drawer--open {
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-drawer-backdrop,
+  .ds-drawer {
+    transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .ds-drawer {
+    width: 100%;
+  }
+}
+
+.ds-drawer__header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid var(--ds-divider);
+}
+
+.ds-drawer__title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  color: var(--ds-navy);
+}
+
+.ds-drawer__close.ds-btn {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.ds-drawer__body {
+  padding: 24px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  /* Forms, info, and lists read top-down, so content starts at the top with any leftover
+     height left empty below - not stranded in the vertical middle of a tall panel. A stage
+     that genuinely wants centering (e.g. a small upload dropzone with nothing else on the
+     page) opts in itself with `margin: auto 0` rather than flipping this default. */
+  justify-content: flex-start;
+  gap: 16px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ds-drawer__message {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ds-text-primary);
+}
+
+.ds-drawer__footer {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding: 24px;
+  border-top: 1px solid var(--ds-divider);
+}
+
+.ds-drawer__footer-actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ─── Timeline ─── */
+
+.ds-timeline__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ds-timeline__item {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  padding: 0 0 16px 0;
+}
+
+/* Line runs through dot centers; extends into the next row so there is no gap. */
+.ds-timeline__item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 2.5px;
+  top: 9px;
+  bottom: -9px;
+  width: 1px;
+  background: var(--ds-divider);
+}
+
+.ds-timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+.ds-timeline__marker {
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--ds-border);
+  position: relative;
+  z-index: 1;
+}
+
+.ds-timeline__item--accent .ds-timeline__marker {
+  background: var(--ds-accent);
+}
+
+.ds-timeline__item--success .ds-timeline__marker {
+  background: var(--ds-success);
+}
+
+.ds-timeline__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ds-timeline__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ds-timeline__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ds-text-primary);
+}
+
+.ds-timeline__time {
+  flex: 0 0 auto;
+  font-size: 12px;
+  color: var(--ds-text-muted);
+  white-space: nowrap;
+}
+
+.ds-timeline__actor,
+.ds-timeline__detail {
+  margin: 2px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ds-text-secondary);
+}
+
+.ds-timeline__detail {
+  color: var(--ds-text-muted);
+}
+
+.ds-timeline__empty {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ds-text-muted);
+}
+
+/* ─── Region select ─── */
+
+.ds-region-select {
+  position: relative;
+}
+
+.ds-region-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-bg-app);
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  color: var(--ds-text-primary);
+  cursor: pointer;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.ds-region-select__trigger.is-open,
+.ds-region-select__trigger:focus {
+  outline: none;
+  border-color: var(--ds-accent);
+}
+
+.ds-region-select__trigger.has-value {
+  border-color: var(--ds-border);
+}
+
+.ds-region-select__trigger-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.ds-region-select__placeholder {
+  color: var(--ds-accent);
+  font-weight: 600;
+}
+
+.ds-region-select__chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.ds-region-select__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 140px;
+  flex: 0 0 auto;
+  padding: 2px 6px 2px 8px;
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-accent-subtle);
+  color: var(--ds-text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.ds-region-select__chip-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ds-region-select__chip-clear {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0 2px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--ds-text-secondary);
+  cursor: pointer;
+}
+
+.ds-region-select__more {
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ds-text-secondary);
+}
+
+.ds-region-select__trigger-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.ds-region-select__clear {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 2px;
+  display: inline-flex;
+  cursor: pointer;
+  border-radius: var(--ds-radius-sm);
+}
+
+.ds-region-select__clear[hidden] {
+  display: none !important;
+}
+
+.ds-region-select__clear:hover {
+  background: var(--ds-bg-platform);
+}
+
+.ds-region-select__clear-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.65;
+}
+
+.ds-region-select__trigger.is-open .ds-region-select__chevron {
+  transform: rotate(180deg);
+}
+
+.ds-region-select__chevron {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  transition: transform 0.15s ease;
+}
+
+.ds-region-select__panels {
+  /* Sized by the primary panel only; secondary is absolutely docked beside it
+     so opening states never shifts the country list. */
+  display: block;
+  width: max-content;
+}
+
+.ds-region-select__panels[hidden] {
+  display: none !important;
+}
+
+.ds-region-select__panel {
+  position: relative;
+  min-width: 180px;
+  width: max-content;
+  height: auto;
+  max-height: min(280px, 50vh);
+  overflow: auto;
+  background: var(--ds-bg-app);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  box-shadow: 0 8px 24px rgba(20, 22, 24, 0.16);
+  padding: 6px;
+}
+
+.ds-region-select__panel--secondary {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 0;
+  min-width: 220px;
+  width: max-content;
+  height: auto;
+  max-height: min(280px, 50vh);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ds-region-select__panel--secondary > .ds-search {
+  flex: 0 0 auto;
+  margin: 6px 6px 0;
+}
+
+.ds-region-select__panels.is-open-up .ds-region-select__panel--secondary {
+  top: auto;
+  bottom: 0;
+}
+
+.ds-region-select__panels.is-flip-x .ds-region-select__panel--secondary {
+  left: auto;
+  right: calc(100% + 8px);
+}
+
+.ds-region-select__panel--secondary[hidden] {
+  display: none !important;
+}
+
+.ds-region-select__list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 0 6px 6px;
+}
+
+.ds-region-select__option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--ds-radius-sm);
+  font-size: 14px;
+  color: var(--ds-text-primary);
+  cursor: pointer;
+}
+
+.ds-region-select__option:hover,
+.ds-region-select__option.is-open {
+  background: var(--ds-bg-platform);
+}
+
+.ds-region-select__option input {
+  accent-color: var(--ds-accent);
+  flex: 0 0 auto;
+}
+
+.ds-region-select__option--branch {
+  padding: 0;
+}
+
+.ds-region-select__branch-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  border-radius: var(--ds-radius-sm);
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  color: var(--ds-text-primary);
+  cursor: pointer;
+  text-align: left;
+}
+
+.ds-region-select__branch-btn:hover {
+  background: var(--ds-bg-platform);
+}
+
+.ds-region-select__branch-chevron {
+  width: 14px;
+  height: 14px;
+  margin-left: auto;
+  opacity: 0.6;
+}
+
+/* ─── Data table ─── */
+
+.ds-table-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  min-height: 0;
+  background: var(--ds-bg-app);
+  border: 1px solid var(--ds-divider);
+  border-radius: var(--ds-radius-md);
+  overflow: hidden;
+}
+
+.ds-table-scroll {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+/*
+ * Native scrollbars stay hidden app-wide. Visible-on-scroll thumbs use
+ * .ds-overlay-scroll + DS.bindOverlayScroll (see .cursor/rules/scrollbars.mdc).
+ */
+*,
+*::before,
+*::after {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Overlay scrollbar host: native bar hidden; floating thumb sits on content */
+.ds-overlay-scroll {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ds-overlay-scroll__viewport {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ds-overlay-scroll__viewport::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.ds-overlay-scroll__thumb {
+  position: absolute;
+  border-radius: 4px;
+  background: rgba(20, 22, 24, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 6; /* above sticky ds-table th (z-index: 5) */
+  will-change: transform, opacity;
+}
+
+.ds-overlay-scroll__thumb--y {
+  top: 0;
+  right: 2px;
+  width: 6px;
+}
+
+.ds-overlay-scroll__thumb--x {
+  left: 0;
+  bottom: 2px;
+  height: 6px;
+}
+
+.ds-overlay-scroll.is-scrolling .ds-overlay-scroll__thumb:not([hidden]) {
+  opacity: 1;
+  transition: none;
+}
+
+.ds-table {
+  width: max-content;
+  min-width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* Resizable tables (opted in via a caller tableId - see DS.dataTable) must
+   never be force-stretched to fill the container: with table-layout: fixed
+   and no min-width: 100%, a fixed table's max-content width IS exactly the
+   sum of its column widths, so declared widths render literally and any
+   leftover space beyond the sum of columns is just trailing blank space
+   rather than getting proportionally redistributed back into every column -
+   which is what made resizing one column visually nudge the others. */
+.ds-table.ds-table--resizable {
+  min-width: 0;
+}
+
+.ds-table th,
+.ds-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--ds-divider);
+  vertical-align: middle;
+  color: var(--ds-text-primary);
+  overflow: hidden;
+  background: var(--ds-bg-app);
+}
+
+.ds-table th {
+  font-weight: 600;
+  color: var(--ds-text-secondary);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+/* Column resize grip: hover the right edge of a header to reveal it. */
+.ds-table__resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  cursor: col-resize;
+  touch-action: none;
+  z-index: 1;
+}
+
+.ds-table__resize-handle::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  right: 3px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--ds-divider);
+  opacity: 0;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.ds-table th:hover .ds-table__resize-handle::after,
+.ds-table__resize-handle:hover::after,
+.ds-table__resize-handle.is-resizing::after {
+  opacity: 1;
+}
+
+.ds-table__resize-handle.is-resizing::after {
+  background: var(--ds-accent);
+}
+
+html.ds-table-resizing,
+html.ds-table-resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+.ds-table tbody tr.is-selected td {
+  background: var(--ds-accent-subtle);
+}
+
+.ds-table tbody tr:hover td {
+  background: var(--ds-bg-platform);
+}
+
+.ds-table tbody tr.is-selected:hover td {
+  background: var(--ds-accent-subtle);
+}
+
+.ds-table tbody tr.ds-table__row--clickable {
+  cursor: pointer;
+}
+
+.ds-table__cell {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.ds-table__sort-btn {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.ds-table__sort-btn-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.ds-table__check {
+  width: 44px;
+  min-width: 44px;
+  overflow: visible;
+  position: sticky;
+  left: 0;
+  z-index: 3;
+}
+
+.ds-table thead .ds-table__check {
+  z-index: 6;
+}
+
+.ds-table__col--check {
+  width: 44px;
+  min-width: 44px;
+}
+
+.ds-table__check input {
+  accent-color: var(--ds-accent);
+}
+
+.ds-table__actions-col {
+  width: 56px;
+  min-width: 56px;
+  text-align: right;
+  overflow: visible;
+  position: sticky;
+  right: 0;
+  z-index: 3;
+}
+
+.ds-table thead .ds-table__actions-col {
+  z-index: 6;
+}
+
+.ds-table__col--actions {
+  width: 56px;
+  min-width: 56px;
+}
+
+.ds-table__sort-btn.is-active {
+  color: var(--ds-accent);
+}
+
+.ds-table__sort-ind {
+  font-weight: 700;
+}
+
+.ds-table__empty {
+  text-align: center;
+  color: var(--ds-text-muted);
+  padding: 32px 16px !important;
+}
+
+.ds-table__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px 12px;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--ds-divider);
+  background: var(--ds-bg-app);
+}
+
+.ds-table__status {
+  font-size: 13px;
+  color: var(--ds-text-secondary);
+}
+
+.ds-table__pager {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ds-table__page-size {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ds-text-secondary);
+}
+
+.ds-table__page-size-select {
+  width: auto;
+  min-height: 32px;
+  padding: 4px 28px 4px 8px;
+}
+
+.ds-spinner {
+  display: block;
+  border-style: solid;
+  border-radius: 50%;
+  border-color: #DCDEE0;
+  border-top-color: var(--ds-accent);
+  animation: ds-spinner-rotate 0.75s linear infinite;
+}
+
+.ds-spinner--sm {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  border-width: 2px;
+}
+
+.ds-spinner--md {
+  width: 28px;
+  height: 28px;
+  border-width: 3px;
+}
+
+.ds-spinner--lg {
+  width: 40px;
+  height: 40px;
+  border-width: 3.5px;
+}
+
+.ds-page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ds-bg-platform);
+}
+
+.ds-page-loader[hidden] {
+  display: none !important;
+}
+
+@keyframes ds-spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-spinner {
+    animation-duration: 1.5s;
+  }
+}
+
+/* ─── Link ─── */
+
+.ds-link {
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-text-link);
+  cursor: pointer;
+  text-align: left;
+}
+
+.ds-link:hover {
+  text-decoration: underline;
+}
+
+.ds-link--center {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.ds-link--muted {
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: var(--ds-text-primary);
+  text-decoration: none;
+}
+
+.ds-link--muted:hover {
+  color: var(--ds-text-primary);
+  text-decoration: underline;
+}
+
+.ds-link--muted[hidden] {
+  display: none !important;
+}
+
+/* ─── Platform app bar ─── */
+
+.platform-appbar {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  z-index: 2;
+  height: 49px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 12px;
+  color: var(--ds-text-contrast);
+  background: var(--ds-navy);
+  border-bottom: 1px solid var(--ds-divider);
+}
+
+.platform-appbar__brand {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.platform-appbar__nav-toggle {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ds-radius-sm);
+  background: transparent;
+  cursor: pointer;
+}
+
+.platform-appbar__nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.platform-appbar__nav-toggle-icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.platform-appbar__logo {
+  width: 67px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.platform-appbar__product {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.platform-appbar__avatar {
+  width: 32px;
+  height: 32px;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--ds-accent);
+  color: var(--ds-text-contrast);
+  font-family: var(--ds-font-family);
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.25px;
+  cursor: pointer;
+}
+
+.platform-appbar__avatar:hover,
+.platform-appbar__account.is-open .platform-appbar__avatar {
+  background: var(--ds-accent-hover);
+}
+
+.platform-appbar__account {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.platform-user-menu {
+  position: fixed;
+  z-index: 40;
+  width: 280px;
+  padding: 16px;
+  background: var(--ds-bg-app);
+  border: 1px solid var(--ds-divider);
+  border-radius: var(--ds-radius-md);
+  box-shadow: 0 8px 24px rgba(20, 22, 24, 0.16);
+}
+
+.platform-user-menu[hidden] {
+  display: none !important;
+}
+
+.platform-user-menu__profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.platform-user-menu__avatar {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--ds-accent);
+  color: var(--ds-text-contrast);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.25px;
+}
+
+.platform-user-menu__meta {
+  min-width: 0;
+}
+
+.platform-user-menu__name,
+.platform-user-menu__email {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.platform-user-menu__name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--ds-text-primary);
+}
+
+.platform-user-menu__email {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--ds-text-secondary);
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+button.platform-user-menu__email:hover,
+button.platform-user-menu__email:focus-visible {
+  color: var(--ds-text-primary);
+}
+
+.platform-user-menu__divider {
+  height: 1px;
+  margin: 12px 0;
+  background: var(--ds-divider);
+}
+
+.platform-user-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: var(--ds-radius-sm);
+  background: transparent;
+  color: var(--ds-text-primary);
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.platform-user-menu__item:hover {
+  background: var(--ds-accent-subtle);
+}
+
+.platform-user-menu__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.platform-user-menu__sign-out {
+  border-radius: 9999px;
+  width: 100%;
+}
+
+.platform-user-menu__legal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.platform-user-menu__legal-link {
+  color: var(--ds-text-muted);
+  font-size: 12px;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+.platform-user-menu__legal-link:hover {
+  color: var(--ds-text-secondary);
+  text-decoration: underline;
+}
+
+/* ─── Platform navigation ─── */
+
+.platform-nav {
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--ds-bg-app);
+  border-right: 1px solid var(--ds-divider);
+  overflow: hidden;
+}
+
+.platform-shell.is-nav-collapsed {
+  --ds-nav-width: var(--ds-nav-width-collapsed);
+}
+
+/* Opacity-only label choreography: collapse fades immediately; expand delays until track opens */
+.platform-shell.is-nav-collapsed .platform-nav__label,
+.platform-shell.is-nav-collapsed .platform-nav__chip-label,
+.platform-shell.is-nav-collapsed .platform-nav__chevron {
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--ds-nav-label-duration) var(--ds-nav-motion-ease);
+}
+
+/* Chip labels must leave the flex flow or the 24px glyph sits left of center in the 40px chip */
+.platform-shell.is-nav-collapsed .platform-nav__chip-label {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.platform-shell.is-nav-collapsed .platform-nav__item--child .platform-nav__label {
+  white-space: nowrap;
+}
+
+/*
+ * Keep icons on a fixed left axis for the whole width animation.
+ * Never justify-content:center while the rail is still wide - that jumps icons
+ * to the middle, then slides them left as the track shrinks.
+ * Equal 12px side insets + 40px tiles match #platform-nav-toggle (rail = 64px).
+ */
+.platform-shell.is-nav-collapsed .platform-nav__item {
+  justify-content: flex-start;
+  padding: 0 12px;
+  gap: 0;
+  overflow: hidden;
+}
+
+.platform-shell.is-nav-collapsed .platform-nav__item--group,
+.platform-shell.is-nav-collapsed .platform-nav__item--leaf,
+.platform-shell.is-nav-collapsed .platform-nav__item--child {
+  height: 48px;
+  flex: 0 0 48px;
+}
+
+/* Same 40px column as parents; glyph stays smaller and centered in the tile */
+.platform-shell.is-nav-collapsed .platform-nav__item--child .platform-nav__icon-tile {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+}
+
+.platform-shell.is-nav-collapsed .platform-nav__actions {
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.platform-shell.is-nav-collapsed .platform-nav__chip {
+  position: relative;
+  width: 40px;
+  max-width: 40px;
+  padding: 0;
+  gap: 0;
+  justify-content: center;
+}
+
+.platform-shell.is-nav-collapsed .platform-nav__brand {
+  padding: 0 12px;
+}
+
+.platform-shell.is-nav-collapsed .platform-nav__brand-logo {
+  width: 40px;
+  height: calc(24px * 40 / 67);
+}
+
+.platform-nav__content,
+.platform-nav__footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-nav__footer {
+  flex: 0 0 auto;
+}
+
+.platform-nav__content {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 8px;
+}
+
+.platform-nav__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-nav__item {
+  width: 100%;
+  min-height: 40px;
+  height: 56px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--ds-text-secondary);
+  font-family: var(--ds-font-family);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    padding var(--ds-nav-motion-duration) var(--ds-nav-motion-ease),
+    background 0.15s ease;
+}
+
+.platform-nav__item--group {
+  height: 48px;
+}
+
+.platform-nav__item--leaf {
+  height: 48px;
+}
+
+.platform-nav__item--child {
+  height: 48px;
+  padding: 0 12px 0 20px;
+  gap: 4px;
+}
+
+.platform-nav__item:hover {
+  background: var(--ds-accent-subtle);
+}
+
+.platform-nav__icon-tile {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--ds-radius-sm);
+  transition:
+    width var(--ds-nav-motion-duration) var(--ds-nav-motion-ease),
+    height var(--ds-nav-motion-duration) var(--ds-nav-motion-ease),
+    flex-basis var(--ds-nav-motion-duration) var(--ds-nav-motion-ease);
+}
+
+.platform-nav__item--child .platform-nav__icon-tile {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+}
+
+.platform-nav__icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.62;
+}
+
+.platform-nav__item--child .platform-nav__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.platform-nav__label {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  opacity: 1;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition:
+    opacity var(--ds-nav-label-duration) var(--ds-nav-motion-ease)
+      var(--ds-nav-label-expand-delay);
+}
+
+.platform-nav__item--child .platform-nav__label {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  white-space: normal;
+}
+
+.platform-nav__chevron {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  opacity: 0.55;
+  transition:
+    opacity var(--ds-nav-label-duration) var(--ds-nav-motion-ease)
+      var(--ds-nav-label-expand-delay);
+}
+
+.platform-nav__children {
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-nav__children[hidden] {
+  display: none !important;
+}
+
+.platform-nav__item.is-active {
+  color: var(--ds-accent);
+}
+
+.platform-nav__item.is-active .platform-nav__icon-tile {
+  background: var(--ds-accent-subtle);
+}
+
+.platform-nav__item.is-active .platform-nav__icon {
+  opacity: 1;
+  filter: invert(31%) sepia(98%) saturate(4721%) hue-rotate(216deg) brightness(96%) contrast(101%);
+}
+
+.platform-nav__group.is-expanded > .platform-nav__item--group {
+  color: var(--ds-text-primary);
+}
+
+.platform-workspace {
+  position: relative;
+  overflow: hidden;
+}
+
+.platform-under-construction {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.platform-under-construction__title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--ds-text-primary);
+}
+
+.platform-under-construction__subtitle {
+  margin: 0;
+  max-width: 480px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--ds-accent);
+}
+
+.platform-under-construction__body {
+  margin: 0;
+  max-width: 420px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ds-text-secondary);
+}
+
+.platform-under-construction__actions {
+  margin-top: 12px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.platform-nav__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px;
+}
+
+.platform-nav__chip {
+  height: 40px;
+  padding: 7px 12px 7px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--ds-bg-disabled);
+  color: var(--ds-text-primary);
+  font-family: var(--ds-font-family);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.15s ease;
+}
+
+.platform-nav__chip:hover {
+  background: var(--ds-border);
+}
+
+.platform-nav__chip-icon,
+.platform-nav__faq-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+}
+
+.platform-nav__chip-label {
+  opacity: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  transition:
+    opacity var(--ds-nav-label-duration) var(--ds-nav-motion-ease)
+      var(--ds-nav-label-expand-delay);
+}
+
+.platform-nav__brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 56px;
+  height: 56px;
+  padding: 0 12px;
+  overflow: hidden;
+}
+
+.platform-nav__brand-logo {
+  width: 67px;
+  height: 24px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  transition:
+    width var(--ds-nav-motion-duration) var(--ds-nav-motion-ease),
+    height var(--ds-nav-motion-duration) var(--ds-nav-motion-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .platform-shell,
+  .platform-nav__label,
+  .platform-nav__chevron,
+  .platform-nav__chip-label,
+  .platform-nav__brand-logo {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* ─── Toast (Air, Figma node 34224:21740) ────────────────────────────
+   Filled variant, title=false. Geometry, type and elevation are taken from the Air
+   component: 4px radius, 12px/16px padding, 12px gap, 216px min and 400px max width,
+   body2 Semibold (14/20), and Elevation/4.
+
+   Top-centre, 40px down, above every other layer: modal and drawer backdrops sit at
+   1200 and menu panels at 1300, so a toast raised while a modal is open stays
+   readable instead of being buried behind it.
+───────────────────────────────────────────────────── */
+
+.ds-toast-host {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1400;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: max-content;
+  max-width: min(400px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+.ds-toast {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 216px;
+  max-width: 400px;
+  overflow: clip;
+  border-radius: var(--ds-radius-sm);
+  box-shadow: var(--ds-elevation-4);
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.ds-toast.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ds-toast.is-leaving {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.ds-toast--success {
+  background: var(--ds-success);
+  color: var(--ds-success-contrast);
+}
+
+.ds-toast--error {
+  background: var(--ds-error-main);
+  color: var(--ds-error-contrast);
+}
+
+.ds-toast--warning {
+  background: var(--ds-warning);
+  color: var(--ds-warning-contrast);
+}
+
+.ds-toast__container {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 400px;
+  padding: 12px 16px;
+}
+
+/* Icon and close sit centred against a 32px band, so a one-line and a two-line
+   message both keep them aligned to the first line's optical centre. */
+.ds-toast__icon,
+.ds-toast__close-wrap {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  max-height: 32px;
+  flex: 0 0 auto;
+}
+
+.ds-toast__close-wrap {
+  justify-content: flex-end;
+}
+
+.ds-toast__glyph {
+  display: block;
+}
+
+.ds-toast__content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 296px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ds-toast__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 32px;
+  max-width: 296px;
+}
+
+/* Air's title=false text node is nowrap + ellipsis. Both of the supplied mockups show
+   two-line messages, and truncating an error would hide the reason it was raised, so
+   this wraps instead of clipping. */
+.ds-toast__message {
+  margin: 0;
+  font-family: var(--ds-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0;
+  word-break: break-word;
+}
+
+/* Air IconButton, size=small-32px, contrast-on-colour. */
+.ds-toast__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: var(--ds-radius-sm);
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.ds-toast__close:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.ds-toast__close:focus-visible {
+  outline: 2px solid var(--ds-bg-app);
+  outline-offset: -2px;
+}
+
+.ds-toast__close-glyph {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-toast {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .ds-toast.is-leaving {
+    opacity: 0;
+    transform: none;
+  }
+}

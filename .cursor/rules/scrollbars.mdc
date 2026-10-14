@@ -1,0 +1,18 @@
+---
+description: Hide native scrollbars app-wide; show overlay thumbs only while scrolling
+alwaysApply: true
+---
+
+# Scrollbars
+
+Native scrollbars stay **hidden** throughout Carrier mock-up UI. Scroll still works (trackpad, wheel, keyboard).
+
+## Do
+
+- Rely on the global hide in `css/components.css`.
+- For primary scroll surfaces (tables, long panels), use `DS.bindOverlayScroll` so floating thumbs appear **only while scrolling**.
+
+## Do not
+
+- Leave always-visible native scrollbars on filters, nav panes, modals, or tables.
+- Invent page-specific scrollbar styling that fights the global hide.

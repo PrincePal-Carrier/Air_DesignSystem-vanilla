@@ -1,0 +1,28 @@
+---
+description: Modal footer button hierarchy (Pattern A) and disable-until-valid rule for form commits
+alwaysApply: true
+---
+
+# Air Modal CTAs (Pattern A)
+
+One footer hierarchy everywhere. Footer order is always **dismiss · tertiary (optional) · commit**, left to right.
+
+## Rule
+
+| Role | `variant` | `color` | Labels |
+|---|---|---|---|
+| Dismiss | `outline` | (default primary) | Cancel (forms opposite Save), Keep editing, Close (view-only panels) |
+| Tertiary | `text` | `secondary` | Optional, rare (never looks like the primary) |
+| Commit | `primary` (contained) | primary | Add, Save, Confirm, Continue |
+| Destructive commit | `primary` | `error` | Discard, Delete, Deactivate |
+
+Destructive confirms use a positive stay label (**Keep role**, **Keep account**, **Keep editing**) opposite the error commit. Do not pair **Cancel** with Delete / Discard / Deactivate.
+
+## Disabled commit (forms only)
+
+`disabled: true` until every required field has a non-empty valid value. Re-enable live via `modalApi.setActions(...)`.
+
+## Reference
+
+- API: `DS.modal`, `modalApi.setActions` in `components.js`
+- See also `ARCHITECTURE.md` and `modal-dividers.mdc`

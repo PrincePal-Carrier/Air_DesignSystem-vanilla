@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air DS gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="gallery-page">
+  <h1>Air design system gallery</h1>
+  <p>Visual index of common <code>DS.*</code> building blocks. Product screens belong in the shell (<a href="../index.html">index.html</a>).</p>
+
+  <section class="gallery-section" id="buttons"></section>
+  <section class="gallery-section" id="tags"></section>
+  <section class="gallery-section" id="fields"></section>
+  <section class="gallery-section" id="modal"></section>
+
+  <script src="../components.js"></script>
+  <script src="../components-date.js"></script>
+  <script>
+    (function () {
+      function section(title, id) {
+        const el = document.getElementById(id);
+        el.appendChild(Object.assign(document.createElement('h2'), { textContent: title }));
+        const row = document.createElement('div');
+        row.className = 'gallery-row';
+        el.appendChild(row);
+        return row;
+      }
+
+      const buttons = section('Buttons', 'buttons');
+      ['primary', 'secondary', 'error'].forEach(function (color) {
+        buttons.appendChild(DS.button({ text: color, variant: 'contained', color: color }));
+        buttons.appendChild(DS.button({ text: color + ' outline', variant: 'outlined', color: color }));
+      });
+
+      const tags = section('Tags', 'tags');
+      [
+        { label: 'Active', color: 'success' },
+        { label: 'Pending', color: 'info' },
+        { label: 'Offline', color: 'neutral' },
+        { label: 'Fault', color: 'error' },
+      ].forEach(function (t) {
+        tags.appendChild(DS.tag({ label: t.label, color: t.color }));
+      });
+
+      const fields = section('Fields', 'fields');
+      fields.appendChild(DS.textField({ label: 'Name', placeholder: 'Enter name' }).root);
+      fields.appendChild(DS.searchField({ placeholder: 'Search' }).root);
+
+      const modalSec = section('Modal', 'modal');
+      modalSec.appendChild(DS.button({
+        text: 'Open sample modal',
+        variant: 'contained',
+        color: 'primary',
+        onClick: function () {
+          DS.modal({
+            title: 'Sample modal',
+            body: 'Footer uses Pattern A: dismiss outline, then primary commit.',
+            actions: [
+              { label: 'Cancel', variant: 'outline', onClick: function (close) { close(); } },
+              { label: 'Confirm', variant: 'primary', onClick: function (close) { close(); } },
+            ],
+          });
+        },
+      }));
+    })();
+  </script>
+</body>
+</html>

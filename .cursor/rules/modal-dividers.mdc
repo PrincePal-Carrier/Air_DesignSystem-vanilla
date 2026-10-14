@@ -1,0 +1,24 @@
+---
+description: When Air Modal header/footer dividers are on or off
+alwaysApply: true
+---
+
+# Air Modal dividers
+
+`DS.modal({ dividers })` mirrors Figma `showHeaderDivider` / `showFooterDivider`. Default is **off**.
+
+## Rule
+
+| Modal type | `dividers` |
+|---|---|
+| Short confirm / alert (message + CTAs) | omit / `false` |
+| Simple form (few fields, short body) | omit / `false` |
+| Scrollable or dense body (tables, assign lists, timelines, long multi-section forms) | `true` (both) |
+
+## Do not
+
+- Use partial `{ header: true }` or `{ footer: true }` unless a Figma frame explicitly specs one side only.
+
+## Reference
+
+- API: `DS.modal`, `DS.MODAL_LAYOUT` in `components.js`

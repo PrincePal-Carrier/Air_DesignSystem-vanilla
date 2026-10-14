@@ -1,0 +1,18 @@
+---
+description: Never use em dashes (or en dashes) in product or docs copy
+alwaysApply: true
+---
+
+# No em dashes
+
+Do **not** use Unicode U+2014 (em dash) or U+2013 (en dash) anywhere in user-facing or authored content.
+
+Applies to: `i18n.js` strings, UI labels/help text, README/ARCHITECTURE/PROGRESS prose, and any new copy.
+
+## Prefer instead
+
+| Instead of | Use |
+|------------|-----|
+| long-dash clause break | period, comma, colon, or parentheses |
+| soft aside | ` - ` (spaced hyphen) or rewrite the sentence |
+| numeric/date ranges | `to` or hyphen, e.g. `10 to 20` or `2024-2026` |

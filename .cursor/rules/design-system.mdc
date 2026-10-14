@@ -1,0 +1,10 @@
+---
+description: Carrier Air mock-up - follow ARCHITECTURE.md as the single source of truth
+alwaysApply: true
+---
+
+# Design system mock-up
+
+- Read and follow [ARCHITECTURE.md](../../ARCHITECTURE.md) before structural or feature work.
+- Respect [ds-boundaries.mdc](ds-boundaries.mdc): do not edit DS-owned files; build product UI under `features/`.
+- Log meaningful product changes in [PROGRESS.md](../../PROGRESS.md) with a dated entry.
